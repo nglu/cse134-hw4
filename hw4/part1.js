@@ -35,7 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     saferButton.addEventListener('click', () => {
-
+        let user_input = prompt("What is your name?");
+        if(user_input) {
+            result.textContent = `Prompt result: ${user_input}`;
+        }
+        else {
+            result.textContent = "Prompt result: User didn't enter anything.";
+        }
     });
 
 })
