@@ -7,9 +7,9 @@
     
     <title>Hi! I'm Nguyen</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet"> -->
     
     <link
         rel="icon"
@@ -18,13 +18,16 @@
         href="data:image/svg+xml,&#x3C;svg xmlns=&#x22;http://www.w3.org/2000/svg&#x22; viewBox=&#x22;0 0 100 100&#x22;&#x3E;&#x3C;text y=&#x22;.9em&#x22; font-size=&#x22;90&#x22;&#x3E;&#x1F680;&#x3C;/text&#x3E;&#x3C;/svg&#x3E;"
     />
     
-    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/index.css"> -->
+
+    <script type="text/javascript" type="module" src="part1.js"></script>
+
 </head>
 <body>
     <header>
         <!-- <h1>This is Nguyen</h1> -->
         <div class="themeImage">
-            <img src="/media/theme-index.jpg" alt="Theme photos">
+            <img src="" alt="Theme photos">
             <!-- <cite>Photo by <a href="https://unsplash.com/@timmossholder?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tim Mossholder</a> on <a href="https://unsplash.com/s/photos/hello?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></cite> -->
         </div>
         <nav role="navigation">
@@ -46,6 +49,13 @@
         
     <main>
         <h1 class="pageTitle">HW4</h1>
+
+        <button type="button" id="alert-button">Alert</button>
+        <button type="button" id="confirm-button">Confirm</button>
+        <button type="button" id="prompt-button">Prompt</button>
+        <button type="button" id="safer-button">Safer Prompt</button>
+        <br>
+        <output id="button-result"></output>
 
     </main>
 
