@@ -37,11 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saferButton.addEventListener('click', () => {
         let user_input = prompt("What is your name?");
+        console.log(user_input);
+        // not sure why it doesn't work. I tried with <i> but it still displayed itallic
+        DOMPurify.sanitize(user_input, {ALLOWED_TAGS: ['b'], ALLOWED_ATTR: ['style']});
+        console.log(user_input);
         if(user_input) {
-            result.textContent = `Prompt result: ${user_input}`;
+            result.innerHTML = `Prompt result: ${user_input}`;
         }
         else {
-            result.textContent = "Prompt result: User didn't enter anything.";
+            result.innerHTML = "Prompt result: User didn't enter anything.";
         }
     });
 
