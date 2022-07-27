@@ -49,12 +49,28 @@
     <main>
         <h1 class="pageTitle">Native dialogs</h1>
 
-        <button type="button" id="alert-button">Alert</button>
-        <button type="button" id="confirm-button">Confirm</button>
-        <button type="button" id="prompt-button">Prompt</button>
-        <button type="button" id="safer-button">Safer Prompt</button>
-        <br>
-        <output id="button-result"></output>
+        <dialog id="favDialog">
+            <form method="dialog">
+              <p><label>Favorite animal:
+                <select>
+                  <option value="default">Choose…</option>
+                  <option>Brine shrimp</option>
+                  <option>Red panda</option>
+                  <option>Spider monkey</option>
+                </select>
+              </label></p>
+              <div>
+                <button value="cancel">Cancel</button>
+                <button id="confirmBtn" value="default">Confirm</button>
+              </div>
+            </form>
+        </dialog>
+        <div>
+            <button type="button" id="alert-button">Alert</button>
+            <button type="button" id="confirm-button">Confirm</button>
+            <button type="button" id="prompt-button">Prompt</button>
+        </div>
+        <output></output>
 
     </main>
 
