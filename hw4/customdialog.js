@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popupDialog.showModal();
         } else {
             outputBox.value = "Sorry, the <dialog> API is not supported by this browser.";
+            // could insert the native dialog code here!!!
         }
     });
 
@@ -101,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popupDialog.showModal();
         } else {
             outputBox.value = "Sorry, the <dialog> API is not supported by this browser.";
+            // could insert the native dialog code here!!!
         }
     });
 
