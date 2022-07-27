@@ -29,15 +29,34 @@
         document.addEventListener('DOMContentLoaded', (_event) => {
             const container = document.getElementById('blogPosts');
             /* Insert the first post */
-            let id = BlogPosts.generateBlogPostId();
+            let id = BlogPosts.generateId();
             let post = BlogPosts.examplePost;
             // BlogPosts.renderBlogPost(BlogPosts.generateBlogPostId(), BlogPosts.examplePost);
             BlogPosts.displayBlogPost(id, post, container);
 
             for (let aPost of BlogPosts.examplePosts) {
-                id = BlogPosts.generateBlogPostId();
+                id = BlogPosts.generateId();
                 BlogPosts.displayBlogPost(id, aPost, container);
             }
+
+            // Set up form to add blog post
+            const addPostForm = document.getElementById('insert-blogPost');
+            addPostForm.addEventListener("submit", (ev) => {
+                // Prevent the default form submission event from continuing and refreshing the page.
+                ev.preventDefault();
+
+                // Load the data from the form into a FormData.
+                const formData = new FormData(ev.target);
+
+                console.log(formData);
+
+                const blogPost = {};
+                for (const [key,value] of formData.entries()) {
+                    console.log(`key: ${key}`);
+                    console.log(`value: ${value}`);
+                }
+
+            });
         });
 
         
