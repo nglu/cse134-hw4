@@ -38,7 +38,7 @@ export function defineBlogElements() {
     customElements.define("post-summary", PostSummary, {extends: 'div'});
 };
 
-export function generateBlogPostId() {
+export function generateId() {
     return crypto.randomUUID();
 };
 
@@ -70,7 +70,7 @@ export const examplePost = {
 /**
  * @param {string} [blogPostId]
  * @param {BlogPost} [blogPost] 
- * @return {PostArticle}
+ * @ return {PostArticle} not really make any diff
  * ^ return type of PostArticle, DocumentFragment, HTMLElement what's the difference?
  * Look at the console, it's different every time you refresh the page
  * they're either <post-article> ... </post-article> with easy looking HTML tag style 
@@ -127,15 +127,33 @@ export function displayBlogPost(blogPostId, blogPost, container) {
 
 /**
  * @returns the JSON map of posts from local storage.
- *
+ */
  function loadBlogPosts() {
     return JSON.parse(localStorage.getItem('blogPosts')) || {};
 } /* loadPosts */
 
 
 /**
- * @param {{string: BlogPost}} posts a JSON map of id->post to put into local storage.
- *
+ * @param {{string: BlogPost}} blogPosts a JSON map of id->post to put into local storage.
+ */
 function storeBlogPosts(blogPosts) {
     localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
 } /* storePosts */
+
+/* Crud Operations Layer
+ * ===================== */
+
+/**
+ * (CREATE)
+ * @param {BlogPost} [blogPost] the book to be added to the DB.
+ * @returns {String} the generated UUID for this book in the DB.
+ */
+export function createPost(blogPost) {
+    const blogPosts = loadBlogPosts();
+    const postId = generateId();
+
+    blogPosts[postId] = blogPost;
+    storeBlogPosts(blogPosts);
+    
+    return postId;
+} /* createPost */
