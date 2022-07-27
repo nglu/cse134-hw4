@@ -13,24 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     confirmButton.addEventListener('click', () => {
-        result.textContent = " ";
+        result.innerHTML = " ";
         let button = confirm("Confirm Button is pushed. Yes or No?");
         
         if(button) {
-            result.textContent = `Confirm result: ${button}`;
+            result.innerHTML = `Confirm result: ${button}`;
         }
         else {
-            result.textContent = `Confirm result: ${button}`;
+            result.innerHTML = `Confirm result: ${button}`;
         }
     });
 
     promptButton.addEventListener('click', () => {
         let user_input = prompt("What is your name?");
         if(user_input) {
-            result.textContent = `Prompt result: ${user_input}`;
+            result.innerHTML = `Prompt result: ${user_input}`;
+            // if using result.textContent
         }
         else {
-            result.textContent = "Prompt result: User didn't enter anything.";
+            result.innerHTML = "Prompt result: User didn't enter anything.";
         }
     });
 

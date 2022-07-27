@@ -76,6 +76,8 @@ export const examplePost = {
  * they're either <post-article> ... </post-article> with easy looking HTML tag style 
  * or post-article with [[Prototype]]: HTMLElement
  * Weird...
+ * 
+ * The return type is not really the problem, it might be about some event 
  */
 export function renderBlogPost(blogPostId, blogPost) {
     /* Get the template */
