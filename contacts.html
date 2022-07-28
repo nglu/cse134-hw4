@@ -19,6 +19,21 @@
     />
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/contacts.css">
+
+    <!-- DOMPurify -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.10/purify.min.js" integrity="sha512-Qr/d6af6cN41/GIKiSmrQd4Y19/fo0YvWhD1VND8O+BsfbFBaZI4K7VVPoUZrd8PzMQ3CE71CkMjhrKf1NbhdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', () => {
+            let nameField = document.getElementById('name_input');
+            let messageField = document.getElementById('msg_input');
+    
+            let cleanName = DOMPurify.sanitize(nameField.value, {ALLOWED_TAGS: ['b', 'i'], ALLOWED_ATTR: ['style']});
+            let cleanMessage = DOMPurify.sanitize(messageField.value, {ALLOWED_TAGS: ['b', 'i'], ALLOWED_ATTR: ['style']});
+    
+            nameField.value = cleanName;
+            messageField.value = cleanMessage;
+        });
+    </script>
 </head>
 <body>
     <header>
