@@ -9,5 +9,5 @@ You can access all parts of HW4 from any main pages (Home page, Projects, Contac
 - Part 1: completed
 - Part 2: completed
 - Part 3: partially completed (missing UPDATE)
-- Part 4: not really doing much, all the styling are based on stylesheets from last HW
+- Part 4: not really changing much except for the icon buttons (which uses an external stylesheet), all the styling are based on stylesheets from last HW
 - Part 5: small attempt on DOMPurify

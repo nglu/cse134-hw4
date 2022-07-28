@@ -68,35 +68,6 @@
                 BlogPosts.createPost(newPost);
                 BlogPosts.displayAllBlogPosts(container);
             });
-
-            /** *
-            for (let aPost of BlogPosts.examplePosts) {
-                let id = BlogPosts.generateId();
-                BlogPosts.displayBlogPost(id, aPost, container);
-            }
-
-            // Set up form to add blog post
-            
-            addPostForm.addEventListener("submit", (ev) => {
-                // Prevent the default form submission event from continuing and refreshing the page.
-                ev.preventDefault();
-
-                // Load the data from the form into a FormData.
-                const formData = new FormData(ev.target);
-
-                console.log(formData);
-
-                const blogPost = {};
-                for (const [key,value] of formData.entries()) {
-                    console.log(`key: ${key}`);
-                    console.log(`value: ${value}`);
-                }
-
-                BlogPosts.createPost();
-
-                
-            });
-            /**/
         });
 
         
