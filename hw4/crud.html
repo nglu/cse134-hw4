@@ -23,24 +23,60 @@
     <script type="module">
         import * as BlogPosts from './blog.js'; // Cannot use '/blog.js', need to have the '.', you'll see error in console
         
-        /* Define Blog element */
+        // 1. Define the BlogPost element
         BlogPosts.defineBlogElements();
+
+        // 2. Create (populate) a post in DB
+        if (BlogPosts.countBlogPosts() == 0) {  // if this check is not there then a post with the same content will be created every Refresh, but with different ID
+            BlogPosts.createPost(BlogPosts.examplePost);
+            for (let post of BlogPosts.examplePosts) {
+                BlogPosts.createPost(post);
+            }
+        }
+        // let post = BlogPosts.examplePost;
+        // let id = BlogPosts.generateId();
+        // BlogPosts.renderBlogPost(BlogPosts.generateBlogPostId(), BlogPosts.examplePost);
+        // BlogPosts.displayBlogPost(id, post, container);
+        
 
         document.addEventListener('DOMContentLoaded', (_event) => {
             const container = document.getElementById('blogPosts');
-            /* Insert the first post */
-            let id = BlogPosts.generateId();
-            let post = BlogPosts.examplePost;
-            // BlogPosts.renderBlogPost(BlogPosts.generateBlogPostId(), BlogPosts.examplePost);
-            BlogPosts.displayBlogPost(id, post, container);
 
+            // Display what we've got so far
+            BlogPosts.displayAllBlogPosts(container);
+
+            // localStorage.clear(); // very bad attempt to fix things so far
+
+            // 3. Set up the form for publishing a blog post
+            const addPostForm = document.getElementById('insert-blogPost');
+
+            addPostForm.addEventListener("submit", (ev) => {
+                // Prevent the default form submission event from continuing and refreshing the page.
+                ev.preventDefault();
+
+                // Load the data from the form into a FormData.
+                const formData = new FormData(ev.target);
+                
+                const newPost = {};
+                for (const [key,value] of formData.entries()) {
+                    console.log(`key: ${key}`);
+                    console.log(`value: ${value}`);
+                    newPost[key] = value;
+                }
+
+                // Insert new blog post
+                BlogPosts.createPost(newPost);
+                BlogPosts.displayAllBlogPosts(container);
+            });
+
+            /** *
             for (let aPost of BlogPosts.examplePosts) {
-                id = BlogPosts.generateId();
+                let id = BlogPosts.generateId();
                 BlogPosts.displayBlogPost(id, aPost, container);
             }
 
             // Set up form to add blog post
-            const addPostForm = document.getElementById('insert-blogPost');
+            
             addPostForm.addEventListener("submit", (ev) => {
                 // Prevent the default form submission event from continuing and refreshing the page.
                 ev.preventDefault();
@@ -56,7 +92,11 @@
                     console.log(`value: ${value}`);
                 }
 
+                BlogPosts.createPost();
+
+                
             });
+            /**/
         });
 
         
@@ -71,6 +111,8 @@
             <post-summary>
                 <p>Lorem ipsum dolor sit amet...</p>
             </post-summary>
+            <button>Delete</button>
+            <button>Edit</button>
         </post-article>
     </template>
 
@@ -108,6 +150,10 @@
                     <input type="text" name="title" value="Blog post #">
                     <label for="date">Date</label>
                     <input type="date" name="date"> <!-- value="YYYY-MM-DD"-->
+                    <!-- At the moment, the best way to deal with dates in forms in a cross-browser way
+                         is to have the user enter the day, month, and year in separate controls -->
+                    <!-- Why this ^ comment? Because you'll see funny date formats between 
+                        the JSON and user inputs -->
                     <label for="summary">Summary</label>
                     <textarea name="summary" cols="60" rows="10"></textarea>
                     <input type="submit" value="Publish post">
