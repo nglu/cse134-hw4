@@ -1,4 +1,4 @@
-I have yet to reached this part but here are some promising addition that I think would make my porfolio site much more clean and comprehensive:
+Here are some promising additions that I think would make my porfolio site much more clean and comprehensive:
 
 - Projects page and Others page: As you can see, it is a blank page that's I've attempted to create some sort of template using CSS grid from last assignment. By using CRUD, it would be much more intuitive to put data into the page instead of hardcode it into the HTML file & hardcode the CSS grid & format. Which keeps everything clean and less tangled.
 
